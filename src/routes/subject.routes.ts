@@ -5,8 +5,8 @@ import { requireRole } from "../middlewares/requireRole.middleware";
 
 const router = Router();
 
-// Crear materia (solo admin)
-router.post("/", authMiddleware, requireRole("admin"), subjectController.create);
+
+router.get('/', checkRole(['admin']), controller.getSubjects);
 
 // Obtener todas las materias (todos los roles)
 router.get("/", authMiddleware, subjectController.all);
